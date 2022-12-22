@@ -1,0 +1,16 @@
+Description: unconditionally build the client too
+Author: Gianfranco Costamagna <locutusofborg@debian.org>
+Last-Update: 2018-10-02
+--- pokerth-1.1.2.orig/pokerth.pro
++++ pokerth-1.1.2/pokerth.pro
+@@ -5,9 +5,7 @@ SUBDIRS = pokerth_protocol.pro pokerth_d
+ official_server {
+     SUBDIRS += pokerth_dbofficial.pro
+ }
+-client: {
+-    SUBDIRS += pokerth_game.pro
+-}
++SUBDIRS += pokerth_game.pro
+ !mac:!gui_800x480:!client:!qml-client {
+     SUBDIRS += pokerth_server.pro chatcleaner.pro
+ }

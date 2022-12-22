@@ -1,0 +1,22 @@
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Tue, 23 Aug 2016 17:50:06 +0200
+Subject: _use_--as-needed
+
+from the libqt4-dev package. *NOTE: updated for 0.9.1 upstream release
+---
+ pokerth_game.pro | 2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: pokerth-1.1.2/pokerth_game.pro
+===================================================================
+--- pokerth-1.1.2.orig/pokerth_game.pro
++++ pokerth-1.1.2/pokerth_game.pro
+@@ -29,6 +29,8 @@
+ # Check for c++11
+ include(pokerth_common.pro)
+ 
++QMAKE_LFLAGS += -Wl,--as-needed
++
+ # PRECOMPILED_HEADER = src/pch_game.h
+ 
+ android{

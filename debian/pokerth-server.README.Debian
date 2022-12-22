@@ -1,0 +1,18 @@
+PokerTH for Debian
+==================
+
+Debian's PokerTH server supports systemd. The pokerth-server service runs a
+dedicated server as the user "_pokerth". This is a simple setup suitable for
+running one server on a machine.
+
+The user's home directory is /var/games/pokerth-server, so you can find PokerTH
+files in the /var/games/pokerth-server/.pokerth directory.
+
+Start the server with systemctl start pokerth-server.
+
+Disabling the server
+-------------------------
+
+To disable the service, use the facilities provided by systemd.
+
+    systemd disable pokerth-server.service

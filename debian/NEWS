@@ -1,0 +1,29 @@
+pokerth (0.8.2-1) experimental; urgency=low
+
+  The pokerth packages was patched since 0.7.1-2 to use
+  pokerth.debian.net as the default server. This is not needed any
+  more since 0.8-1.
+
+  However, if you had 0.7.1-2 installed, you will have to change the
+  settings back to the official server by yourself:
+  Set "Serverlist Address" under Settings → Internet Game to
+  "pokerth.net/serverlist.xml.z". PokerTH will now fetch the official
+  serverlist again.
+
+ -- Evgeni Golov <evgeni@debian.org>  Thu, 04 Jan 2011 18:24:36 +0200
+
+pokerth (0.7.1-2) unstable; urgency=low
+
+  The server at PokerTH.net now runs the 0.8 version of the software,
+  which is incompatible with 0.7.x we ship in Squeeze.
+  Because of that a 0.7.x server is running on pokerth.debian.net.
+
+  On new installations this will be the default server used.
+
+  On old ones you have to reconfigure your client yourself.
+  Either set "Serverlist Address" under Settings → Internet Game to
+  "pokerth.debian.net/serverlist.xml.z" or use the "Manual Server
+  Configuration" using "pokerth.debian.net" as the server address.
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 27 Sep 2010 14:09:17 +0200
+

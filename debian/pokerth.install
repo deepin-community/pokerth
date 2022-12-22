@@ -1,0 +1,4 @@
+debian/pokerth.xpm usr/share/pixmaps/
+pokerth usr/games
+pokerth.desktop usr/share/applications/
+pokerth.png usr/share/pixmaps/

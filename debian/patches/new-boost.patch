@@ -1,0 +1,13 @@
+Description: fix build failure with new boost
+Origin: https://github.com/pokerth/pokerth/issues/339
+--- pokerth-1.1.1.orig/src/gui/qt/gametable/gametableimpl.cpp
++++ pokerth-1.1.1/src/gui/qt/gametable/gametableimpl.cpp
+@@ -3859,7 +3859,7 @@ void gameTableImpl::triggerVoteOnKick(in
+ 	int playerCount = static_cast<int>(seatList->size());
+ 	if (id < playerCount) {
+ 		PlayerListIterator pos = seatList->begin();
+-		advance(pos, id);
++		std::advance(pos, id);
+ 		myStartWindow->getSession()->startVoteKickPlayer((*pos)->getMyUniqueID());
+ 	}
+ }

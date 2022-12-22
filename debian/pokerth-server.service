@@ -1,0 +1,16 @@
+[Unit]
+Description=PokerTH multiplayer server
+Documentation=man:pokerth_server(6)
+After=network.target
+RequiresMountsFor=/var/games/pokerth-server
+
+[Service]
+Type=forking
+Restart=on-failure
+User=_pokerth
+ExecStart=/var/games/pokerth-server/pokerth_server
+PIDFile=/var/games/pokerth-server/.pokerth/log-files/pokerth.pid
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target

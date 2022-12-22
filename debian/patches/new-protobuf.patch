@@ -1,0 +1,24 @@
+Description: fix build failure with new protobuf
+Origin: https://github.com/pokerth/pokerth/issues/339
+--- pokerth-1.1.1.orig/src/net/common/netpacket.cpp
++++ pokerth-1.1.1/src/net/common/netpacket.cpp
+@@ -249,7 +249,7 @@ NetPacket::GameErrorToNetError(int gameE
+ 		retVal = ErrorMessage::sessionTimeout;
+ 		break;
+ 	default :
+-		retVal = ErrorMessage::reserved;
++		retVal = ErrorMessage::custReserved;
+ 		break;
+ 	}
+ 	return retVal;
+--- pokerth-1.1.1.orig/pokerth.proto
++++ pokerth-1.1.1/pokerth.proto
+@@ -701,7 +701,7 @@ message ReportGameAckMessage {
+ 
+ message ErrorMessage {
+ 	enum ErrorReason {
+-		reserved = 0;
++		custReserved = 0;
+ 		initVersionNotSupported = 1;
+ 		initServerFull = 2;
+ 		initAuthFailure = 3;

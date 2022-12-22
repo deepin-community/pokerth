@@ -1,0 +1,613 @@
+pokerth (1.1.2-1.1) UNRELEASED; urgency=medium
+
+  * update
+
+ -- Debian Games Team <pkg-games-devel@lists.alioth.debian.org>  Wed, 25 May 2022 20:51:33 +0800
+
+pokerth (1.1.2-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * [7709175] Add VCS-field to d/control
+  * [55dee0f] Fix FTBFS against boost_1.74. (Closes: #977224)
+
+ -- Anton Gladky <gladk@debian.org>  Sat, 19 Dec 2020 19:37:17 +0100
+
+pokerth (1.1.2-1) unstable; urgency=medium
+
+  * Team upload.
+  * Upload to unstable
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 03 Oct 2018 13:18:32 +0200
+
+pokerth (1.1.2-1~exp1) experimental; urgency=medium
+
+  * Team upload
+  * Bump compat level to 11
+  * Comment out old VCS fields
+  * switch URI in https mode
+  * Remove deprecated menu file
+  * Bump std-version to 4.2.1.1, no changes required
+  * Remove dh_systemd from dependencies
+  * New upstream release
+  * Drop patches, upstream
+    -10_fix_ftbfs_with_new_libircclient.patch
+    -qtsingleapplication-qt55-ftbfs.patch
+    -qmake-gcc-6.patch
+    -std-ifstream-and-std-ofstream.patch
+    -pokerth-c++11.patch
+  * Refresh remaining patches
+    -boost-1.66.patch
+    -cross.patch
+    -system-websockets.patch
+  * Add new patches:
+    -fix-included.patch: to fix a FTBFS due to usr/included
+     being added in the wrong order in build line
+    -client.patch: build the client unconditionally, to avoid
+     missing binary during install
+  * Simplify rules file
+  * Update watch file.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 02 Oct 2018 16:52:24 +0200
+
+pokerth (1.1.1-11) unstable; urgency=medium
+
+  * Team upload
+  * Really move fonts dependencies on -data package (Closes: #861675)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 02 Oct 2018 12:21:54 +0200
+
+pokerth (1.1.1-10) unstable; urgency=medium
+
+  * Team upload
+  * Switch to qt5 only build (Closes: #875091)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 17 Sep 2018 16:37:21 +0200
+
+pokerth (1.1.1-9) unstable; urgency=medium
+
+  * Team upload
+  * Fix build failure with boost1.66, with patch from freebsd
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 11 Sep 2018 15:33:56 +0200
+
+pokerth (1.1.1-9) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * fix FTCBFS: hard codes the build architecture qmake (Closes: #900019)
+
+  [ Gianfranco Costamagna ]
+  * Team upload
+  * Add patch to use system websocketpp library
+  * Add patch to fix a boost build failure
+  * Add patch to fix new protobuf failure (Closes: #900616)
+
+  [ Evgeni Golov ]
+  * Move fonts dependencies into pokerth-data (Closes: #861675)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 11 Sep 2018 14:14:00 +0200
+
+pokerth (1.1.1-7) unstable; urgency=medium
+
+  * Team upload.
+  * Apply upstream patch and fix FTBFS with c++11. (Closes: #843078)
+  * Switch to compat level 10.
+
+ -- Markus Koschany <apo@debian.org>  Wed, 09 Nov 2016 22:21:49 +0100
+
+pokerth (1.1.1-6) unstable; urgency=medium
+
+  * Team upload.
+  * pokerth-server.postrm: Check for existence of /var/games too.
+
+ -- Markus Koschany <apo@debian.org>  Thu, 08 Sep 2016 20:43:16 +0200
+
+pokerth (1.1.1-5) unstable; urgency=medium
+
+  * Team upload.
+  * pokerth-server.postrm: Check for existence of directory
+    /var/games/pokerth-server.
+    Thanks to Andreas Beckmann for the report. (Closes: #836950)
+
+ -- Markus Koschany <apo@debian.org>  Thu, 08 Sep 2016 03:01:50 +0200
+
+pokerth (1.1.1-4) unstable; urgency=medium
+
+  * Team upload.
+  * Declare compliance with Debian Policy 3.9.8.
+  * wrap-and-sort -sa.
+  * Vcs-Browser: Use https.
+  * Switch from ttf-dejavu-core to fonts-dejavu-core.
+  * Add qmake-gcc-6.patch and std-ifstream-and-std-ofstream.patch and fix
+    build failures with GCC-6. (Closes: #812290, #828116)
+  * d/rules: Add QMAKE_CXXFLAGS+="-std=gnu++98" flag to configure and force
+    building with the older gnu++98 standard.
+  * d/rules: export DEB_BUILD_MAINT_OPTIONS = hardening=+all.
+  * Add pokerth-server.service file and support systemd. (Closes: #772931)
+  * d/control: pokerth-server: Depend on pokerth-data and adduser.
+  * Add pokerth-server.postinst and pokerth-server.postrm maintainer scripts
+    and start the server with system user _pokerth in
+    /var/games/pokerth-server.
+  * Add pokerth-server.links and symlink required data into
+    /var/games/pokerth-server. (Closes: #772929)
+  * Build with --parallel.
+  * Build with systemd and build-depend on dh-systemd.
+  * Install pokerth_server man page into section 6 (games).
+  * Add pokerth-server.lintian-overrides because we ship a service file
+    already.
+  * Add README.Debian file for pokerth-server.
+
+ -- Markus Koschany <apo@debian.org>  Tue, 23 Aug 2016 22:19:15 +0200
+
+pokerth (1.1.1-3) unstable; urgency=medium
+
+  * Update d/copyright, thanks lintian.
+  * Import upstream patch to fix FTBFS with Qt 5.5
+    Closes: #803143
+  * Standards-Version: 3.9.6
+
+ -- Evgeni Golov <evgeni@debian.org>  Wed, 11 Nov 2015 21:29:51 +0100
+
+pokerth (1.1.1-2.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop unused build-depends on libgnutls-dev, add b-d on libgcrypt20-dev.
+    Closes: #764106
+
+ -- Andreas Metzler <ametzler@debian.org>  Sat, 11 Oct 2014 13:04:50 +0200
+
+pokerth (1.1.1-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS with newer libircclient-dev by updating #include paths.
+    (10_fix_ftbfs_with_new_libircclient.patch).
+    Closes: #759851.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sat, 13 Sep 2014 16:31:53 -0400
+
+pokerth (1.1.1-2) unstable; urgency=medium
+
+  * Build with Qt5 on kfreebsd-amd64, kfreebsd-i386, mips, mipsel,
+    powerpc, hppa and ppc64 again.
+
+ -- Evgeni Golov <evgeni@debian.org>  Tue, 04 Feb 2014 20:40:59 +0100
+
+pokerth (1.1.1-1) unstable; urgency=medium
+
+  * New upstream bugfix release.
+  * Standards-Version: 3.9.5
+
+ -- Evgeni Golov <evgeni@debian.org>  Fri, 10 Jan 2014 22:38:39 +0100
+
+pokerth (1.1.0-2) unstable; urgency=medium
+
+  * Restore compatibility with Qt4, patch by freespacer@#PokerTH.
+  * Build with Qt4 on kfreebsd-*, mips*, powerpc, hppa, ppc64, and x32.
+    Do not use Qt4 on the other archs, as it is untested by upstream.
+
+ -- Evgeni Golov <evgeni@debian.org>  Tue, 31 Dec 2013 16:57:29 +0100
+
+pokerth (1.1.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Sun, 22 Dec 2013 18:21:48 +0100
+
+pokerth (1.1.0~beta4-1) experimental; urgency=medium
+
+  * New upstream beta release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Sat, 21 Dec 2013 12:39:00 +0100
+
+pokerth (1.1.0~beta3-1) experimental; urgency=low
+
+  * New upstream beta release.
+  * Explicitly build-depend on qtchooser for older Ubuntu releases.
+  * Look for LIBS in `qmake -query QT_INSTALL_LIBS`.
+
+ -- Evgeni Golov <evgeni@debian.org>  Fri, 15 Nov 2013 07:26:23 +0100
+
+pokerth (1.1.0~beta2-1) experimental; urgency=low
+
+  * New upstream beta release.
+  * Build-Depend on Qt5 instead of Qt4.
+  * Correct Vcs-* URLs to point to anonscm.debian.org
+  * Update debian/copyright
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 14 Oct 2013 20:31:07 +0200
+
+pokerth (1.0.1-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * Standards-Version: 3.9.4
+
+ -- Evgeni Golov <evgeni@debian.org>  Wed, 15 May 2013 23:19:16 +0200
+
+pokerth (1.0.1-1) experimental; urgency=low
+
+  * New upstream bugfix release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Sun, 07 Apr 2013 15:12:35 +0200
+
+pokerth (1.0-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Tue, 01 Jan 2013 18:52:36 +0100
+
+pokerth (1.0~beta2-1) experimental; urgency=low
+
+  * New upstream beta release.
+  * Add protobuf-compiler and libprotobuf-dev to Build-Depends.
+  * Use debhelper 9 for hardening flags and use dh_auto_configure
+    to get the hardening flags passed properly to qmake.
+
+ -- Evgeni Golov <evgeni@debian.org>  Wed, 26 Dec 2012 21:24:42 +0100
+
+pokerth (0.9.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Drop fix-ftbfs-gcc-4.7-672007.patch, applied upstream.
+  * Refresh 03_use_--as-needed.patch.
+
+ -- Evgeni Golov <evgeni@debian.org>  Tue, 26 Jun 2012 21:00:32 +0200
+
+pokerth (0.9.4-2) unstable; urgency=low
+
+  * Fix FTBFS with GCC 4.7.
+    Closes: #672007
+  * Standards-Version: 3.9.3
+
+ -- Evgeni Golov <evgeni@debian.org>  Thu, 17 May 2012 18:29:40 +0200
+
+pokerth (0.9.4-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Fri, 13 Apr 2012 20:31:08 +0200
+
+pokerth (0.9.3-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Sat, 11 Feb 2012 22:42:59 +0100
+
+pokerth (0.9.2-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 30 Jan 2012 15:54:19 +0100
+
+pokerth (0.9.1-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Mark Vejvoda ]
+  * New upstream release (Closes: #653466)
+    - Works with the official servers (Closes: #654578)
+    - Updated patches that apply to new release
+    - updated copyrights
+
+  [ Paul Wise ]
+  * Drop README.source, no longer needed
+
+  [ Evgeni Golov ]
+  * Drop obsolete patches and those applied upstream:
+    - 01_clean_libpokerth.patch
+    - 02_use_dejavu_fonts.patch
+    - 05_disable_gnu++0x.patch
+    - 06_fix_gcc46_ftbfs.patch
+    - 07_boost146_ftbfs_upstream.patch
+    - 08_use_debian_libircclient.patch
+    - 09_use_debian_libtinyxml.patch
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 23 Jan 2012 18:22:10 +0100
+
+pokerth (0.8.3-3) unstable; urgency=low
+
+  * Fix FTBFS with gcc-4.6 by not passing -no_dead_strip_inits_and_terms
+    on anything but MacOSX.
+    Trivial patch by me (06_fix_gcc46_ftbfs.patch).
+    LP: #770849
+  * Fix FTBFS with boost1.46 by forcing the v2 filesystem API.
+    Patch by upstream (07_boost146_ftbfs_upstream.patch).
+    Closes: #625022
+  * Don't use the internal copy of libtinyxml and libircclient.
+    Adds two patches:
+     - 08_use_debian_libircclient.patch
+     - 09_use_debian_libtinyxml.patch
+    And Build-depends on libtinyxml-dev and libircclient-dev.
+  * Add pokerth_db and pokerth_protocol to the clean patch.
+  * Standards-Version: 3.9.2
+
+ -- Evgeni Golov <evgeni@debian.org>  Thu, 05 May 2011 13:58:08 +0200
+
+pokerth (0.8.3-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Evgeni Golov <evgeni@debian.org>  Fri, 18 Mar 2011 11:03:56 +0100
+
+pokerth (0.8.3-1) experimental; urgency=low
+
+  * New upstream bugfix release.
+  * Add 05_disable_gnu++0x.patch to fix FTBFS on Ubuntu.
+  * Drop 04_fix_build_no_add_neded.patch, applied upstream.
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 17 Jan 2011 11:33:00 +0100
+
+pokerth (0.8.2-1) experimental; urgency=low
+
+  * New upstream bugfix release.
+  * Updated debian/NEWS about the server situation, no need to use
+    pokerth.debian.net anymore.
+  * Add libsqlite3-dev as Build-Dep.
+  * Add 04_fix_build_no_add_neded.patch from Ubuntu.
+
+ -- Evgeni Golov <evgeni@debian.org>  Tue, 04 Jan 2011 18:43:30 +0100
+
+pokerth (0.8.1-1) experimental; urgency=low
+
+  * New upstream bugfix release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Sun, 10 Oct 2010 12:06:34 +0200
+
+pokerth (0.8-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 27 Sep 2010 10:10:32 +0200
+
+pokerth (0.8~beta3-1) experimental; urgency=low
+
+  * New upstream beta release.
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 06 Sep 2010 13:38:20 +0200
+
+pokerth (0.8~beta2-1) experimental; urgency=low
+
+  * New upstream beta release.
+  * debian/watch:
+    + We do not need to strip dfsg from the version anymore.
+    + Detect -betaX as ~betaX.
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 16 Aug 2010 09:20:18 +0200
+
+pokerth (0.8~beta1-1) experimental; urgency=low
+
+  * New upstream beta release.
+  * Use format 3.0 (quilt) and upstream's .tar.bz2 as orig.tar.
+  * debian/{control,rules}:
+    + Don't use quilt directly.
+    + Use dh7 style tiny rules, depend on debhelper >= 7.0.50~
+  * debian/control:
+    + Add B-D on libgsasl7-dev.
+    + Standards-Version: 3.9.1
+    + Remove Mario Iseli from Uploaders, he isn't active in pkg-games
+      anymore. Thanks for your work, Mario!
+  * debian/patches/*:
+    + Refresh against new upstream.
+  * debian/copyright:
+    + Quote BSD license, thanks lintian.
+
+ -- Evgeni Golov <evgeni@debian.org>  Wed, 28 Jul 2010 10:26:25 +0200
+
+pokerth (0.7.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Build-Depend on unversioned boost packages again.
+      Closes: #531119, #534086
+    + Improve pokerth-server description, one does not need the package
+      for one-table games.
+    + Standards-Version: 3.8.2, no changes.
+
+ -- Evgeni Golov <evgeni@debian.org>  Fri, 26 Jun 2009 00:23:56 +0200
+
+pokerth (0.7-1) unstable; urgency=low
+
+  * New upstram release.
+    + Upload to unstable again.
+  * debian/patches/04_enable_beta.patch:
+    + Drop the patch, it's not needed anymore.
+  * debian/rules:
+    + Add back the find/chmod call, as tarball has wrong permissions
+      for some files again.
+
+ -- Evgeni Golov <evgeni@debian.org>  Mon, 04 May 2009 08:08:41 +0200
+
+pokerth (0.7~beta2-1) experimental; urgency=low
+
+  * New upstream beta release (fetched from SVN r1911).
+  * debian/control:
+    + Update my e-mail address.
+    + Remove DM-Upload-Allowed.
+    + Add ${misc:Depends} to all packages as suggested by lintian.
+  * debian/copyright:
+    + Add copyright info on console/*.
+
+ -- Evgeni Golov <evgeni@debian.org>  Sun, 26 Apr 2009 09:50:16 +0200
+
+pokerth (0.7~beta1-1) experimental; urgency=low
+
+  * New upstream beta release (fetched from SVN r1886).
+  * debian/patches/02_use_dejavu_fonts.patch:
+    + Refresh patch against new source.
+  * debian/patches/01_clean_libpokerth.patch:
+    + Refresh (again) against new source.
+  * debian/patches/04_enable_beta.patch:
+    + Add a (temporary) patch, for using the beta server.
+  * debian/rules:
+    + use $(QUILT_STAMPFN) instead of patch.
+  * debian/{compat,control,rules}:
+    + use debhelper 7.
+  * debian/copyright:
+    + update copyright years.
+    + use better machine-readable style.
+    + add copyright about the danuxi1 table.
+    + add links to LGPL-2+ and GPL-2.
+  * debian/control:
+    + Set DM-Upload-Allowed: yes.
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Sun, 19 Apr 2009 20:22:23 +0200
+
+pokerth (0.6.4-1) unstable; urgency=low
+
+  [ Evgeni Golov ]
+  * New upstream release.
+  * debian/control:
+    + Build-Depend on libboost1.37 packages, as we need at least 1.36.
+    + Wrap and reorder Build-Depends for better reading.
+    + Drop unneeded Build-Depends on libmikmod2-dev and
+      libboost-date-time-dev.
+    + Bump Standards-Version to 3.8.1, no changes needed.
+  * debian/patches/01_clean_libpokerth.patch:
+    + Refresh patch against new source.
+  * debian/rules:
+    + Remove executable flag on data/* and pokerth.png
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Mon, 23 Mar 2009 13:09:51 +0100
+
+pokerth (0.6.3-2-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Upload to unstable.
+  * debian/rules:
+    + Fix some trailing spaces spotted by Cyril Brulebois.
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Sat, 14 Feb 2009 01:34:15 +0100
+
+pokerth (0.6.3-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/patches/04_fix_no_logging.patch:
+    + Drop the patch, it was imported from upstream SVN and is present
+      in the current release.
+  * debian/patches/03_use_--as-needed.patch:
+    + Disable the patch, as it is currently useless (it saves exactly
+      zero dependencies).
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Mon, 22 Dec 2008 20:46:33 +0100
+
+pokerth (0.6.2-2) unstable; urgency=low
+
+  * debian/pokerth.menu:
+    + Expand title to "PokerTH (Texas Hold'em)". (Closes: #488058)
+    + Add an icon file.
+  * debian/pokerth.xpm:
+    + Added (converted from pokerth.png).
+  * debian/pokerth.install:
+    + Install debian/pokerth.xpm to /usr/share/pixmaps
+  * debian/patches/04_fix_no_logging.dpatch:
+    + Added new patch by upstream.
+    + Checks if logging is enabled, before writing the log.
+      (Closes: #488197)
+  * debian/control, debian/rules, debian/patches:
+    + Switch from dpatch to quilt.
+  * debian/README.source:
+    + Add a hint how to use quilt.
+  * debian/control:
+    + Bump to Standards-Version 3.8.0, README.source was added.
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Wed, 02 Jul 2008 23:29:14 +0200
+
+pokerth (0.6.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Replace build-dependency on libssl-dev with libgnutls-dev.
+    + Add a build-dependency on libboost-iostreams-dev and
+       libcurl4-gnutls-dev.
+  * debian/copyright:
+    + Remove the OpenSSL exception, we link against GnuTLS now.
+  * debian/patches/:
+    + Refresh 02_use_dejavu_fonts and 03_use_--as-needed.
+  * debian/rules:
+    + Don't set CFLAGS, let dpkg handle it.
+  * do not install the binary in /usr/games by hand anymore
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Thu, 22 May 2008 20:42:11 +0200
+
+pokerth (0.6.1-2) unstable; urgency=low
+
+  * Remove pokerth-server's dependency on adduser, it was a mistake
+  * Add a build-dependency on libssl-dev (Closes: #477000)
+  * Add an OpenSSL exception to the copyright file
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Mon, 28 Apr 2008 00:27:57 +0200
+
+pokerth (0.6.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove build-dependency on qt4-dev-tools and libboost-dev (thanks Ubuntu)
+  * Add pokerth-server binary package, shipping the multiplayer server
+  * Add a build-dependency on libboost-program-options-dev
+  * Add 03_use_--as-needed.dpatch to re-enable building with --as-needed
+  * Drop 03_fix_gcc43_ftbfs.dpatch, was accepted upstream
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Fri, 14 Mar 2008 20:46:43 +0100
+
+pokerth (0.6-1-2) unstable; urgency=low
+
+  * Switch to DejaVu fonts (Closes: #461283)
+    replace dependency on ttf-bitstream-vera by ttf-dejavu-core
+    add patches/02_use_dejavu_fonts.dpatch
+  * Fix GCC 4.3 FTBFS by properly including <cstring> (Closes: #461954)
+    add patches/03_fix_gcc43_ftbfs.dpatch (was accepted in upstream svn)
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Tue, 22 Jan 2008 00:24:45 +0100
+
+pokerth (0.6-1-1) unstable; urgency=low
+
+  * New upstream release (Closes: #433390, #428449, #438741)
+  * Split data/* into a separate arch:all package
+  * Added a desktop file (Closes: #451566)
+  * Added a build-dependency on libboost-filesystem-dev
+  * Added dependencies on gsfonts-x11, ttf-bitstream-vera,
+    no need to ship data/fonts/ in binary package anymore
+  * Added Homepage field to debian/control
+  * Added Vcs-* fields to debian/control
+  * Added myself to uploaders
+  * Set pkg-games as maintainer
+  * Removed patches/01-newgame_cancel.dpatch
+  * Bump to Standards-Version 3.7.3, no changes needed
+
+ -- Evgeni Golov <sargentd@die-welt.net>  Tue, 18 Dec 2007 15:34:00 +0100
+
+pokerth (0.5+dfsg-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #425918, #431923, #431801).
+  * Added a build-dependency on libboost-date-time-dev,
+    libsdl-mixer1.2-dev and libmikmod2-dev.
+  * Repacked upstream tarball and removed andybold.ttf which is non-free.
+
+ -- Mario Iseli <admin@marioiseli.com>  Tue, 11 Jul 2007 14:22:32 +0200
+
+pokerth (0.4-1) unstable; urgency=low
+
+  * New upstream release (Closes: #418627)
+  * Added build-dependencies on libboost-dev and libboost-thread-dev.
+  * Don't use 01-newgame_cancel.dpatch anymore.
+
+ -- Mario Iseli <admin@marioiseli.com>  Mon, 17 Apr 2007 18:22:06 +0200
+
+pokerth (0.3-3) unstable; urgency=low
+
+  * Added patches/02-gcc-4.3-ftbfs.dpatch to fix FTBFS with GCC 4.3,
+    thanks to Martin Michlmayr (Closes: #417479).
+
+ -- Mario Iseli <admin@marioiseli.com>  Tue, 03 Apr 2007 16:12:42 +0200
+
+pokerth (0.3-2) unstable; urgency=low
+
+  * Build-depend now on dpatch.
+  * Added patch from upstream to fix reappearing "New Game" Dialog
+    (Closes: #409560)
+  * Removed debian/dirs and use now install -D in debian/rules.
+
+ -- Mario Iseli <admin@marioiseli.com>  Sun, 11 Feb 2007 21:10:34 +0100
+
+pokerth (0.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #403230)
+
+ -- Mario Iseli <admin@marioiseli.com>  Tue, 19 Dec 2006 16:09:45 +0100

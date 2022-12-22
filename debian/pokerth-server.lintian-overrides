@@ -1,0 +1,3 @@
+# We ship a service file and I think these warnings are unwarranted
+pokerth-server: init.d-script-not-included-in-package
+pokerth-server: init.d-script-not-marked-as-conffile

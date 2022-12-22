@@ -1,0 +1,9 @@
+03_use_--as-needed.patch
+system-websockets.patch
+new-boost.patch
+new-protobuf.patch
+cross.patch
+boost-1.66.patch
+fix-includes.patch
+client.patch
+fix_ftbfs_boost174.patch

@@ -1,0 +1,25 @@
+Description: Fix FTBFS against boost_1.74
+Author: Anton Gladky <gladk@debian.org>
+Bug-Debian: https://bugs.debian.org/977224
+Last-Update: 2020-12-19
+
+--- pokerth-1.1.2.orig/src/net/common/serveracceptwebhelper.cpp
++++ pokerth-1.1.2/src/net/common/serveracceptwebhelper.cpp
+@@ -35,7 +35,6 @@
+ #include <net/websocketdata.h>
+ 
+ using namespace std;
+-
+ ServerAcceptWebHelper::ServerAcceptWebHelper(ServerCallback &serverCallback, boost::shared_ptr<boost::asio::io_service> ioService,
+ 		const string &webSocketResource, const string &webSocketOrigin)
+ 	: m_ioService(ioService), m_serverCallback(serverCallback),
+@@ -56,8 +55,8 @@ ServerAcceptWebHelper::Listen(unsigned s
+ 	m_webSocketServer->set_access_channels(websocketpp::log::alevel::all);
+ #endif
+ 
++	using namespace boost::placeholders;
+ 	m_webSocketServer->init_asio(m_ioService.get());
+-
+ 	m_webSocketServer->set_validate_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::validate), this, _1));
+ 	m_webSocketServer->set_open_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_open), this, _1));
+ 	m_webSocketServer->set_close_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_close), this, _1));
